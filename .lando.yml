@@ -1,0 +1,6 @@
+name: php-lle
+recipe: laravel
+config:
+  webroot: app/public
+  php: 8.1
+  via: nginx
