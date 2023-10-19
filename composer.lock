@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa322c53454393ed775cfe4807d54a50",
+    "content-hash": "a264afd7d3296349a4623dfbadcfc7a9",
     "packages": [
         {
             "name": "brick/math",
@@ -969,6 +969,66 @@
                 }
             ],
             "time": "2023-08-27T10:19:19+00:00"
+        },
+        {
+            "name": "jbohme/nominatim-laravel",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jbohme/nominatim-laravel.git",
+                "reference": "07f5b74b66a2ceffb7979176a749cf1781b612dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jbohme/nominatim-laravel/zipball/07f5b74b66a2ceffb7979176a749cf1781b612dd",
+                "reference": "07f5b74b66a2ceffb7979176a749cf1781b612dd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "@stable",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "NominatimLaravel\\Providers\\NominatimLaravelProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "NominatimLaravel\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "José Bohme",
+                    "email": "jose_berna_dino@hotmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Wrapper for Nominatim API to Laravel",
+            "homepage": "https://github.com/jbohme/php-nominatim",
+            "keywords": [
+                "geo",
+                "geolocation",
+                "laravel",
+                "nominatim",
+                "open street map",
+                "osm",
+                "web service"
+            ],
+            "support": {
+                "issues": "https://github.com/jbohme/nominatim-laravel/issues",
+                "source": "https://github.com/jbohme/nominatim-laravel/tree/v1.0.3"
+            },
+            "time": "2021-10-07T18:40:18+00:00"
         },
         {
             "name": "laravel/framework",
@@ -8075,5 +8135,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
