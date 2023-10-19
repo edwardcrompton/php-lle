@@ -4,6 +4,6 @@
 
 <ul>
 @foreach ($results as $result)
-    <li>{{$result}}</li>
+    <li>{{$result['address']}}</li>
 @endforeach
 </ul>
