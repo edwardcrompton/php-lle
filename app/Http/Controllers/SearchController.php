@@ -6,8 +6,8 @@ use NominatimLaravel\Content\Nominatim;
 
 class SearchController extends Controller
 {
-    public function __construct() {
-        $this->searchApi = new Nominatim('http://nominatim.openstreetmap.org/');
+    public function __construct(Nominatim $searchApi) {
+        $this->searchApi = $searchApi;
     }
 
     public function index(string $place) {
