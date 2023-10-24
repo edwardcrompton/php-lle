@@ -2,7 +2,7 @@
 <html>
 <head>
 {{--    @include('includes.head')--}}
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="http://unpkg.com/alpinejs@3.13.2/dist/cdn.min.js"></script>
 </head>
 <body>
 <div class="container">

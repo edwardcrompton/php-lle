@@ -6,9 +6,8 @@
 
     <p>Record a sound clip</p>
 
-    <body>
-        <button wire:click="record">+</button>
-        <script src="main.js"></script>
-    </body>
+    <div x-data="">
+        <button x-on:click="console.log('test')">Record</button>
+    </div>
 
 @stop
