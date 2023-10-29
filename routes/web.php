@@ -19,3 +19,9 @@ Route::get('/', function () {
 });
 
 Route::get('/search/{place}', [SearchController::class, 'index']);
+
+Route::get('/audio', function () {
+    return view('audio');
+});
+
+Route::post('/upload-audio', 'AudioController@uploadAudio');
