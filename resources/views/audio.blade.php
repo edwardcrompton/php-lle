@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div>
-    <button id="toggleRecord">Start Recording</button>
+<form method="POST" id="audioClipForm" action="{{url('/upload-audio')}}">
+    @csrf
+
+    <button id="toggleRecord" type="button">Start Recording</button>
     <audio id="audioPlayer" controls></audio>
-</div>
+
+    <input type="submit" value="Save">
+</form>
 @endsection
 
 @section('scripts')
@@ -15,8 +19,11 @@
 
     const toggleRecordButton = document.getElementById('toggleRecord');
     const audioPlayer = document.getElementById('audioPlayer');
+    const form = document.getElementById('audioClipForm')
 
     toggleRecordButton.addEventListener('click', toggleRecording);
+
+    form.addEventListener('submit', sendAudioToServer);
 
     async function toggleRecording() {
         if (isRecording) {
@@ -40,7 +47,8 @@
             const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
             const audioUrl = URL.createObjectURL(audioBlob);
             audioPlayer.src = audioUrl;
-            sendAudioToServer(audioBlob);
+
+            //sendAudioToServer(audioBlob);
         };
 
         mediaRecorder.start();
@@ -56,7 +64,8 @@
         }
     }
 
-    async function sendAudioToServer(blob) {
+    async function sendAudioToServer(event) {
+        event.preventDefault();
         const formData = new FormData();
         formData.append('audio', blob);
 
@@ -68,6 +77,8 @@
         if (response.ok) {
             console.log('Audio uploaded successfully.');
         } else {
+            const json = await response.json();
+            console.log(json);
             console.error('Failed to upload audio.');
         }
     }
