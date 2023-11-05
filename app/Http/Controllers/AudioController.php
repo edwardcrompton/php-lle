@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AudioRecord;
 use Illuminate\Http\Request;
 
 class AudioController extends Controller
@@ -10,7 +11,9 @@ class AudioController extends Controller
     {
         if ($request->hasFile('audio')) {
             $audio = $request->file('audio');
-            $path = $audio->store('audio'); // Store the audio file in the 'storage/app/audio' directory
+
+            // Store the audio file in the 'storage/app/audio' directory
+            $path = $audio->store('audio');
 
             // Create a new database record
             $record = new AudioRecord();
