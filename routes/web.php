@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\AudioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,4 @@ Route::get('/audio', function () {
     return view('audio');
 });
 
-Route::post('/upload-audio', 'AudioController@uploadAudio');
+Route::post('/upload-audio', [AudioController::class, 'uploadAudio']);
