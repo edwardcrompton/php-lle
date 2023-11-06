@@ -21,8 +21,10 @@ Route::get('/', function () {
 
 Route::get('/search/{place}', [SearchController::class, 'index']);
 
-Route::get('/audio', function () {
+Route::get('/audio/record', function () {
     return view('audio');
 });
 
-Route::post('/upload-audio', [AudioController::class, 'uploadAudio']);
+Route::post('/audio/upload', [AudioController::class, 'uploadAudio']);
+
+Route::get('/audio/list', [AudioController::class, 'listAudioRecords']);

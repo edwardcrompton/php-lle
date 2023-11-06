@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" enctype="multipart/form-data" id="audioClipForm" action="{{url('/upload-audio')}}">
+<form method="POST" enctype="multipart/form-data" id="audioClipForm" action="{{url('/audio/upload')}}">
     @csrf
 
     <label for="address">Location address</label>
