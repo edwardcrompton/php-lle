@@ -30,4 +30,12 @@ class AudioController extends Controller
         return response()->json(['message' => 'No audio file provided'], 400);
     }
 
+    public function listAudio()
+    {
+        // Retrieve paginated audio records, typically with a specific number of records per page
+        $audioRecords = AudioRecord::paginate(10);
+
+        return view('list', compact('audioRecords'));
+    }
+
 }

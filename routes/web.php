@@ -27,4 +27,5 @@ Route::get('/audio/record', function () {
 
 Route::post('/audio/upload', [AudioController::class, 'uploadAudio']);
 
-Route::get('/audio/list', [AudioController::class, 'listAudioRecords']);
+Route::get('/audio/list', [AudioController::class, 'listAudio'])->name('audio-records.index');
+;
