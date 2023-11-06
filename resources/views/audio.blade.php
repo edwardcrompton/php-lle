@@ -4,7 +4,12 @@
 <form method="POST" enctype="multipart/form-data" id="audioClipForm" action="{{url('/upload-audio')}}">
     @csrf
 
+    <label for="address">Location address</label>
+    <input type="text" name="location_address" id="address"></input>
+
+    <label for="audio">Audio file</label>
     <input id="audio" name="audio" type="file"></input>
+
     <button id="toggleRecord" type="button">Start Recording</button>
     <audio id="audioPlayer" controls></audio>
 

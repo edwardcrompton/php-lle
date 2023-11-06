@@ -9,5 +9,5 @@ class AudioRecord extends Model
 {
     protected $table = 'audio_records';
 
-    protected $fillable = ['audio_path'];
+    protected $fillable = ['audio_path', 'location_address'];
 }

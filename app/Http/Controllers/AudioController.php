@@ -12,12 +12,16 @@ class AudioController extends Controller
         if ($request->hasFile('audio')) {
             $audio = $request->file('audio');
 
+            $locationAddress = $request->input('location_address');
+
             // Store the audio file in the 'storage/app/audio' directory
             $path = $audio->store('audio');
 
             // Create a new database record
             $record = new AudioRecord();
             $record->audio_path = $path;
+            $record->location_address = $locationAddress;
+
             $record->save();
 
             return response()->json(['message' => 'Audio uploaded successfully']);
