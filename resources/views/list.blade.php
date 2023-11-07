@@ -9,7 +9,7 @@
                 <strong>ID:</strong> {{ $record->id }}<br>
                 <strong>Location:</strong> {{ $record->location_address }}<br>
                 <strong>Audio Path:</strong> {{ $record->audio_path }}<br>
-                <audio id="audioPlayer" src="/storage/app/{{ $record->audio_path }}" controls></audio>
+                <audio id="audioPlayer" src="/storage/{{ $record->audio_path }}" controls></audio>
                 <!-- You can add additional information here as needed -->
             </li>
         @endforeach

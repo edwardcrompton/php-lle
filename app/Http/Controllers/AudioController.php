@@ -15,7 +15,7 @@ class AudioController extends Controller
             $locationAddress = $request->input('location_address');
 
             // Store the audio file in the 'storage/app/audio' directory
-            $path = $audio->store('audio');
+            $path = $audio->store('audio', ['disk' => 'public']);
 
             // Create a new database record
             $record = new AudioRecord();
