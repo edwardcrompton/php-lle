@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" id="audioClipForm" action="{{url('/upload-audio')}}">
+<form method="POST" enctype="multipart/form-data" id="audioClipForm" action="{{url('/audio/upload')}}">
     @csrf
+
+    <label for="address">Location address</label>
+    <input type="text" name="location_address" id="address"></input>
+
+    <label for="audio">Audio file</label>
+    <input id="audio" name="audio" type="file"></input>
 
     <button id="toggleRecord" type="button">Start Recording</button>
     <audio id="audioPlayer" controls></audio>
@@ -19,21 +25,18 @@
 
     const toggleRecordButton = document.getElementById('toggleRecord');
     const audioPlayer = document.getElementById('audioPlayer');
-    const form = document.getElementById('audioClipForm')
 
     toggleRecordButton.addEventListener('click', toggleRecording);
 
-    form.addEventListener('submit', sendAudioToServer);
-
-    async function toggleRecording() {
+    async function toggleRecording(event) {
         if (isRecording) {
             stopRecording();
         } else {
-            startRecording();
+            startRecording(event);
         }
     }
 
-    async function startRecording() {
+    async function startRecording(event) {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         mediaRecorder = new MediaRecorder(stream);
 
@@ -48,7 +51,13 @@
             const audioUrl = URL.createObjectURL(audioBlob);
             audioPlayer.src = audioUrl;
 
-            //sendAudioToServer(audioBlob);
+            const blob = document.getElementById('audio');
+
+            let file = new File([audioBlob], "audio.wav", {type:"audio/wav", lastModified:new Date().getTime()});
+
+            let container = new DataTransfer();
+            container.items.add(file);
+            audio.files = container.files;
         };
 
         mediaRecorder.start();
@@ -64,23 +73,5 @@
         }
     }
 
-    async function sendAudioToServer(event) {
-        event.preventDefault();
-        const formData = new FormData();
-        formData.append('audio', blob);
-
-        const response = await fetch('/upload-audio', {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (response.ok) {
-            console.log('Audio uploaded successfully.');
-        } else {
-            const json = await response.json();
-            console.log(json);
-            console.error('Failed to upload audio.');
-        }
-    }
 </script>
 @endsection
