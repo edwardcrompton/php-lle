@@ -4,6 +4,6 @@
 
 <ul>
 @foreach ($results as $result)
-    <li><a href="{{ url('/audio/record?location=' . urlencode($result['address'])) }}">{{ $result['address'] }}</a></li>
+    <li><a href="{{ url('/audio/record?location=' . urlencode($result['address'])) . '&name=' . urlencode($result['name']) }}">{{ $result['address'] }}</a></li>
 @endforeach
 </ul>

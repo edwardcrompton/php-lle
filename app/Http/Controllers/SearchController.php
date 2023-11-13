@@ -21,6 +21,7 @@ class SearchController extends Controller
         foreach ($results as $result) {
             $list[] = [
                 'type' => $result['type'],
+                'name' => $result['name'],
                 'address' => $result['display_name'],
                 'osm_place_id' => $result['place_id'],
             ];
