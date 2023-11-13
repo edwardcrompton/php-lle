@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\SoundController;
+use App\Http\Controllers\AudioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +21,10 @@ Route::get('/', function () {
 
 Route::get('/search/{place}', [SearchController::class, 'index']);
 
-Route::get('/record', [SoundController::class, 'record']);
+Route::get('/audio/record', function () {
+    return view('audio');
+});
+
+Route::post('/audio/upload', [AudioController::class, 'uploadAudio']);
+
+Route::get('/audio/list', [AudioController::class, 'listAudio'])->name('audio-records.index');
