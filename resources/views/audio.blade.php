@@ -39,7 +39,7 @@
 
     async function startRecording(event) {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder = new MediaRecorder(stream, {mimeType: 'audio/ogg;codecs=opus'});
 
         mediaRecorder.ondataavailable = event => {
             if (event.data.size > 0) {
