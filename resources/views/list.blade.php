@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Audio Records</h1>
+    <h1>Search places</h1>
+
+    <form method="GET" enctype="multipart/form-data" id="placeSearchForm">
+        @csrf
+
+        <label for="placename">Place name</label>
+        <input type="text" name="placename" id="placename" placeholder="Search for a placename"></input>
+        <input type="submit" value="Search">
+    </form>
 
     <ul>
         @foreach ($audioRecords as $record)

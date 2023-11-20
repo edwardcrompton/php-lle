@@ -33,7 +33,7 @@ class AudioController extends Controller
     public function listAudio()
     {
         // Retrieve paginated audio records, typically with a specific number of records per page
-        $audioRecords = AudioRecord::paginate(10);
+        $audioRecords = AudioRecord::orderBy('id', 'DESC')->paginate(10);
 
         return view('list', compact('audioRecords'));
     }
