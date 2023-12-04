@@ -19,10 +19,12 @@ class SearchController extends Controller
 
         $list = [];
         foreach ($results as $result) {
-            $list[] = [
+            $list[] = (object)[
+                'id' => NULL, // Fetch only if there's a corresponding db object.
                 'type' => $result['type'],
                 'name' => $result['name'],
-                'address' => $result['display_name'],
+                'location_address' => $result['display_name'],
+                'audio_path' => NULL, // Fetch only if there's a db obj.
                 'osm_place_id' => $result['place_id'],
             ];
         }

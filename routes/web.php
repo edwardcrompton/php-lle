@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\AudioController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/search/{place}', [SearchController::class, 'index']);
+Route::get('/filter', function(Request $request) {
+    return redirect()->route('search', ['place' => $request->place]);
+})->name('filter');
+
+Route::get('/search/place/{place}', [SearchController::class, 'index'])->name('search');
 
 Route::get('/audio/record', function () {
     return view('audio');

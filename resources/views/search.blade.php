@@ -3,7 +3,7 @@
 <h2>Results for {{$place}}</h2>
 
 <ul>
-@foreach ($results as $result)
-    <li><a href="{{ url('/audio/record?location=' . urlencode($result['address'])) . '&name=' . urlencode($result['name']) }}">{{ $result['address'] }}</a></li>
+@foreach ($results as $row)
+    @include('item')
 @endforeach
 </ul>
