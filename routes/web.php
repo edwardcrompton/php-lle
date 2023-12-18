@@ -24,12 +24,14 @@ Route::get('/filter', function(Request $request) {
     return redirect()->route('search', ['place' => $request->place]);
 })->name('filter');
 
-Route::get('/search/place/{place}', [SearchController::class, 'index'])->name('search');
+Route::get('/search/place/{place}', [SearchController::class, 'index'])
+    ->name('search');
 
 Route::get('/audio/record', function () {
     return view('audio');
 });
 
-Route::post('/audio/upload', [AudioController::class, 'uploadAudio']);
+Route::post('/audio/upload', [AudioController::class, 'upload']);
 
-Route::get('/audio/list', [AudioController::class, 'listAudio'])->name('audio-records.index');
+Route::get('/audio/list', [AudioController::class, 'list'])
+    ->name('audio-records.index');

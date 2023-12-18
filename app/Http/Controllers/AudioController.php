@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class AudioController extends Controller
 {
-    public function uploadAudio(Request $request)
+    public function upload(Request $request)
     {
         if ($request->hasFile('audio')) {
             $audio = $request->file('audio');
@@ -30,7 +30,7 @@ class AudioController extends Controller
         return response()->json(['message' => 'No audio file provided'], 400);
     }
 
-    public function listAudio()
+    public function list()
     {
         // Retrieve paginated audio records, typically with a specific number of records per page
         $audioRecords = AudioRecord::orderBy('id', 'DESC')->paginate(10);
