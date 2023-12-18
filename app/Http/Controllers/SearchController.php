@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AudioRecord;
 use NominatimLaravel\Content\Nominatim;
 
 class SearchController extends Controller
@@ -19,12 +20,24 @@ class SearchController extends Controller
 
         $list = [];
         foreach ($results as $result) {
+            $audioRecord = AudioRecord::select('id', 'audio_path')
+                ->where('location_address', $result['display_name'])
+                ->first();
+
+            $id = NULL;
+            $audioPath = NULL;
+
+            if ($audioRecord) {
+                $id = $audioRecord->id;
+                $audioPath = $audioRecord->audio_path;
+            }
+
             $list[] = (object)[
-                'id' => NULL, // Fetch only if there's a corresponding db object.
+                'id' => $id,
                 'type' => $result['type'],
                 'name' => $result['name'],
                 'location_address' => $result['display_name'],
-                'audio_path' => NULL, // Fetch only if there's a db obj.
+                'audio_path' => $audioPath,
                 'osm_place_id' => $result['place_id'],
             ];
         }
