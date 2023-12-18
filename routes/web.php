@@ -29,7 +29,7 @@ Route::get('/search/place/{place}', [SearchController::class, 'index'])
 
 Route::get('/audio/record', function () {
     return view('audio');
-});
+})->name('record');
 
 Route::post('/audio/upload', [AudioController::class, 'upload']);
 

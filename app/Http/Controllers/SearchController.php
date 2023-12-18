@@ -20,12 +20,14 @@ class SearchController extends Controller
 
         $list = [];
         foreach ($results as $result) {
+            $id = NULL;
+            $audioPath = NULL;
+            $location = $result['display_name'];
+            $recordPath = route('record', ['location' => $location]);
+
             $audioRecord = AudioRecord::select('id', 'audio_path')
                 ->where('location_address', $result['display_name'])
                 ->first();
-
-            $id = NULL;
-            $audioPath = NULL;
 
             if ($audioRecord) {
                 $id = $audioRecord->id;
@@ -36,9 +38,10 @@ class SearchController extends Controller
                 'id' => $id,
                 'type' => $result['type'],
                 'name' => $result['name'],
-                'location_address' => $result['display_name'],
+                'location_address' => $location,
                 'audio_path' => $audioPath,
                 'osm_place_id' => $result['place_id'],
+                'record_path' => $recordPath,
             ];
         }
 
