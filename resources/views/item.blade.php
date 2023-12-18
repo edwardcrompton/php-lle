@@ -1,7 +1,8 @@
 <li>
-    <strong>ID:</strong> {{ $row->id }}<br>
     <strong>Location:</strong> {{ $row->location_address }}<br>
-    <strong>Audio Path:</strong> {{ $row->audio_path }}<br>
-    <audio id="audioPlayer" src="/storage/{{ $row->audio_path }}" controls></audio>
+    @if ($row->audio_path)
+        <strong>Audio Path:</strong> {{ $row->audio_path }}<br>
+        <audio id="audioPlayer" src="/storage/{{ $row->audio_path }}" controls></audio>
+    @endif
     <!-- You can add additional information here as needed -->
 </li>
