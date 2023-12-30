@@ -16,8 +16,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [AudioController::class, 'list'])
+    ->name('audio-records.index');
+
+Route::get('/audio/list', function() {
+    return redirect()->route('audio-records.index');
 });
 
 Route::get('/filter', function(Request $request) {
@@ -32,6 +35,3 @@ Route::get('/audio/record', function () {
 })->name('record');
 
 Route::post('/audio/upload', [AudioController::class, 'upload']);
-
-Route::get('/audio/list', [AudioController::class, 'list'])
-    ->name('audio-records.index');

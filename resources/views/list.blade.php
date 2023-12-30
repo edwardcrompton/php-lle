@@ -3,6 +3,9 @@
 @section('content')
     <h1>Search places</h1>
 
+    <p>Listed below are the place names that already have an audio file associated with them.</p>
+    <p>Search for a place name below to see all matching places. Audio files will be shown if they already exist.</p>
+
     <form method="GET" enctype="multipart/form-data" id="placeSearchForm" action="{{ route('filter') }}">
         @csrf
 
