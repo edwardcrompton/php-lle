@@ -24,7 +24,8 @@ class AudioController extends Controller
 
             $record->save();
 
-            return response()->json(['message' => 'Audio uploaded successfully']);
+            flash('Audio uploaded successfully.')->success();
+            return redirect()->route('audio-records.index');
         }
 
         return response()->json(['message' => 'No audio file provided'], 400);
