@@ -23,7 +23,6 @@ class SearchController extends Controller
             $id = NULL;
             $audioPath = NULL;
             $location = $result['display_name'];
-            $recordPath = route('record', ['location' => $location]);
 
             $audioRecord = AudioRecord::select('id', 'audio_path')
                 ->where('location_address', $result['display_name'])
@@ -34,15 +33,16 @@ class SearchController extends Controller
                 $audioPath = $audioRecord->audio_path;
             }
 
-            $list[] = (object)[
+            $audio = new AudioRecord([
                 'id' => $id,
                 'type' => $result['type'],
                 'name' => $result['name'],
                 'location_address' => $location,
                 'audio_path' => $audioPath,
                 'osm_place_id' => $result['place_id'],
-                'record_path' => $recordPath,
-            ];
+            ]);
+
+            $list[] = $audio;
         }
 
         return view('search', [
