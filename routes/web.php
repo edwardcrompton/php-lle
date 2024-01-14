@@ -35,3 +35,8 @@ Route::get('/audio/record', function () {
 })->name('record');
 
 Route::post('/audio/upload', [AudioController::class, 'upload']);
+
+Route::get('locale/{locale}', function ($locale){
+    Session::put('locale', $locale);
+    return redirect()->back();
+});
