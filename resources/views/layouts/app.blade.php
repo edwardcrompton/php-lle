@@ -8,8 +8,11 @@
 </head>
 <body>
 
-    <li><a href="{{ url('locale/en') }}" ><i class="fa fa-language"></i>en</a></li>
-    <li><a href="{{ url('locale/cy') }}" ><i class="fa fa-language"></i>cy</a></li>
+    <nav>
+    @foreach(config('app.available_locales') as $locale)
+        <a href="{{ route(Route::currentRouteName(), $locale) }}">{{ strtoupper($locale) }}</a>
+    @endforeach
+    </nav>
 
     <div class="container">
         @include('flash::message')
