@@ -1,3 +1,5 @@
+@inject('urllocaliser', 'App\Services\UrlLocaliser')
+
 @extends('layouts.app')
 
 @section('content')
@@ -6,7 +8,7 @@
     <p>Listed below are the place names that already have an audio file associated with them.</p>
     <p>Search for a place name below to see all matching places. Audio files will be shown if they already exist.</p>
 
-    <form method="GET" enctype="multipart/form-data" id="placeSearchForm" action="{{ route('filter') }}">
+    <form method="GET" enctype="multipart/form-data" id="placeSearchForm" action="{{ $urllocaliser->route('filter') }}">
         @csrf
 
         <label for="place">Place name</label>
