@@ -1,4 +1,5 @@
 <!-- resources/views/layouts/app.blade.php -->
+@inject('urllocaliser', 'App\Services\UrlLocaliser')
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">

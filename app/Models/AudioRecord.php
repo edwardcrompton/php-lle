@@ -12,6 +12,9 @@ class AudioRecord extends Model
     protected $fillable = ['audio_path', 'location_address'];
 
     public function getUpdatePath() {
-        return route('record', ['location' => $this->location_address]);
+        return route(
+            'record', 
+            ['location' => $this->location_address, 'locale' => app()->getLocale()],
+        );
     }
 }

@@ -26,7 +26,7 @@ Route::group(['prefix' => '{locale}', 'middleware' => 'setlocale'], function () 
     });
 
     Route::get('/filter', function(Request $request) {
-        return redirect()->route('search', ['place' => $request->place]);
+        return redirect()->route('search', ['place' => $request->place, 'locale' => app()->getLocale()]);
     })->name('filter');
 
     Route::get('/search/place/{place}', [SearchController::class, 'index'])
