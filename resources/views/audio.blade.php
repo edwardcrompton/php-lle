@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>{{ app('request')->input('name') }}</h1>
-<form method="POST" enctype="multipart/form-data" id="audioClipForm" action="{{ $urllocaliser->route('record') }}">
+<form method="POST" enctype="multipart/form-data" id="audioClipForm" action="{{ $urllocaliser->route('upload') }}">
     @csrf
 
     <label for="address">Location address</label>

@@ -1,5 +1,3 @@
-@inject('urllocaliser', 'App\Services\UrlLocaliser')
-
 @extends('layouts.app')
 
 @section('content')

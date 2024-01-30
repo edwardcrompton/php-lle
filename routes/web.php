@@ -16,13 +16,14 @@ use Illuminate\Http\Request;
 |
 */
 
+// Localised routes.
 Route::group(['prefix' => '{locale}', 'middleware' => 'setlocale'], function () {
 
     Route::get('/', [AudioController::class, 'list'])
-        ->name('audio-records.index');
+        ->name('index');
 
     Route::get('/audio/list', function() {
-        return redirect()->route('audio-records.index');
+        return redirect()->route('index');
     });
 
     Route::get('/filter', function(Request $request) {
@@ -32,10 +33,12 @@ Route::group(['prefix' => '{locale}', 'middleware' => 'setlocale'], function () 
     Route::get('/search/place/{place}', [SearchController::class, 'index'])
         ->name('search');
 
-    Route::get('/audio/record', function () {
-        return view('audio');
-    })->name('record');
+    Route::get('/audio/record', [AudioController::class, 'record'])
+        ->name('record');
 
-    Route::post('/audio/upload', [AudioController::class, 'upload']);
-
+    Route::post('/audio/upload', [AudioController::class, 'upload'])
+        ->name('upload');
 });
+
+// Non localised routes.
+
