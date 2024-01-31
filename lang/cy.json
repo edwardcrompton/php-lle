@@ -1,3 +1,22 @@
 {
-    "Search places": "Chwilio lleodd"
+    "Search places": "Chwilio lleodd",
+    "Search": "Chwilio",
+    "Search results": "Canlyniadau chwilio",
+    "Location": "Lleoliad",
+    "Update audio": "Ail-wneud clip sain",
+    "Listed below are the place names that already have an audio file associated with them.": "Mae'r enwau o dan..",
+    "Search for a place name below to see all matching places.": "",
+    "Audio files will be shown if they already exist.": "",
+    "Start recording": "",
+    "Stop recording": "",
+    "Save": "",
+    "Previous": "",
+    "Next": "",
+    "Showing x to y of z results": "",
+    "Place name": "",
+    "Results for x": "",
+    "Audio file": "",
+    "No file selected": "",
+    "Audio uploaded successfully.": "",
+    "No audio file was provided.": ""
 }
