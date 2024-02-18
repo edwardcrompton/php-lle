@@ -34,8 +34,8 @@ class AudioController extends Controller
             flash('Audio uploaded successfully.')->success();
             return $this->urlLocaliser->redirect('index');
         }
-
-        return response()->json(['message' => 'No audio file provided'], 400);
+        flash('No audio file was provided.')->error();
+        return $this->urlLocaliser->redirect('record');
     }
 
     public function record() {
