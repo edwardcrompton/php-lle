@@ -1,9 +1,8 @@
 <li>
-    <strong>Location:</strong> {{ $row->location_address }}<br>
+    {{ $row->location_address }}<br>
     @if ($row->audio_path)
-        <strong>Audio Path:</strong> {{ $row->audio_path }}<br>
         <audio id="audioPlayer" src="/storage/{{ $row->audio_path }}" controls></audio>
     @endif
-    <a href="{{ $row->getUpdatePath() }}">Update audio</a>
+    <a href="{{ $row->getUpdatePath() }}">{{ __('Update audio') }}</a>
     <!-- You can add additional information here as needed -->
 </li>

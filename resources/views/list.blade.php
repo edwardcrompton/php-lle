@@ -3,15 +3,15 @@
 @section('content')
     <h1>{{ __('Search places') }}</h1>
 
-    <p>Listed below are the place names that already have an audio file associated with them.</p>
-    <p>Search for a place name below to see all matching places. Audio files will be shown if they already exist.</p>
+    <p>{{ __('This list shows the latest audio clips.') }}</p>
+    <p>{{ __('Search for a place name to add a new audio clip.') }}</p>
 
     <form method="GET" enctype="multipart/form-data" id="placeSearchForm" action="{{ $urllocaliser->route('filter') }}">
         @csrf
 
-        <label for="place">Place name</label>
-        <input type="text" name="place" id="place" placeholder="Search for a place name"></input>
-        <input type="submit" value="Search">
+        <label for="place">{{ __('Place name') }}</label>
+        <input type="text" name="place" id="place" placeholder="{{ __('Search for a place name') }}"></input>
+        <input type="submit" value="{{ __('Chwilio') }}">
     </form>
 
     <ul>
