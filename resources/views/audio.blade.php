@@ -5,13 +5,13 @@
 <form method="POST" enctype="multipart/form-data" id="audioClipForm" action="{{ $urllocaliser->route('upload') }}">
     @csrf
 
-    <label for="address">Location address</label>
+    <label for="address">{{ __('Location address') }}</label>
     <input type="text" name="location_address" id="address" value="{{ app('request')->input('location') }}"></input>
 
-    <label for="audio">Audio file</label>
+    <label for="audio">{{ __('Audio file') }}</label>
     <input id="audio" name="audio" type="file"></input>
 
-    <button id="toggleRecord" type="button">Start Recording</button>
+    <button id="toggleRecord" type="button">{{ __('Start recording') }}</button>
     <audio id="audioPlayer" controls></audio>
 
     <input type="submit" value="Save">
