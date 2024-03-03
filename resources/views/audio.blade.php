@@ -24,6 +24,9 @@
     let audioChunks = [];
     let isRecording = false;
 
+    var labelStopRecording = {!! json_encode(__('Stop recording')) !!};
+    var labelStartRecording = {!! json_encode(__('Start recording')) !!};
+
     const toggleRecordButton = document.getElementById('toggleRecord');
     const audioPlayer = document.getElementById('audioPlayer');
 
@@ -63,14 +66,14 @@
 
         mediaRecorder.start();
         isRecording = true;
-        toggleRecordButton.textContent = 'Stop Recording';
+        toggleRecordButton.textContent = labelStopRecording;
     }
 
     function stopRecording() {
         if (mediaRecorder && mediaRecorder.state === 'recording') {
             mediaRecorder.stop();
             isRecording = false;
-            toggleRecordButton.textContent = 'Start Recording';
+            toggleRecordButton.textContent = labelStartRecording;
         }
     }
 
