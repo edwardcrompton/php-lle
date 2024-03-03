@@ -11,7 +11,7 @@
 
         <label for="place">{{ __('Place name') }}</label>
         <input type="text" name="place" id="place" placeholder="{{ __('Search for a place name') }}"></input>
-        <input type="submit" value="{{ __('Chwilio') }}">
+        <input type="submit" value="{{ __('Search') }}">
     </form>
 
     <ul>

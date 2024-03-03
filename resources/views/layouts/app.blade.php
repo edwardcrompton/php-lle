@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-    <title>Audio Recorder</title>
+    <title>PHP Lle | {{ __('Audio Recorder') }}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>

@@ -14,7 +14,7 @@
     <button id="toggleRecord" type="button">{{ __('Start recording') }}</button>
     <audio id="audioPlayer" controls></audio>
 
-    <input type="submit" value="Save">
+    <input type="submit" value="{{ __('Save') }}">
 </form>
 @endsection
 
