@@ -41,4 +41,6 @@ Route::group(['prefix' => '{locale}', 'middleware' => 'setlocale'], function () 
 });
 
 // Non localised routes.
-
+Route::get('/', function() {
+    return redirect('/en');
+});
