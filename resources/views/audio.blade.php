@@ -5,16 +5,24 @@
 <form method="POST" enctype="multipart/form-data" id="audioClipForm" action="{{ $urllocaliser->route('upload') }}">
     @csrf
 
-    <label for="address">{{ __('Location address') }}</label>
-    <input type="text" name="location_address" id="address" value="{{ app('request')->input('location') }}"></input>
+    <div id="address-container">
+        <label for="address">{{ __('Location address') }}</label>
+        <input type="text" name="location_address" id="address" value="{{ app('request')->input('location') }}"></input>
+    </div>
 
-    <label for="audio">{{ __('Audio file') }}</label>
-    <input id="audio" name="audio" type="file"></input>
+    <div id="audio-container">
+        <label for="audio">{{ __('Audio file') }}</label>
+        <input id="audio" name="audio" type="file"></input>
+    </div>
 
-    <button id="toggleRecord" type="button">{{ __('Start recording') }}</button>
-    <audio id="audioPlayer" controls></audio>
-
-    <input type="submit" value="{{ __('Save') }}">
+    <div id="controls">
+        <button id="toggleRecord" type="button">{{ __('Start recording') }}</button>
+        <audio id="audioPlayer" controls></audio>
+    </div>
+    
+    <div id="save">
+        <input type="submit" value="{{ __('Save') }}">
+    </div>    
 </form>
 @endsection
 
@@ -29,6 +37,9 @@
 
     const toggleRecordButton = document.getElementById('toggleRecord');
     const audioPlayer = document.getElementById('audioPlayer');
+    
+    // If JS is running we don't need to show the file upload field.
+    document.getElementById('audio-container').style.display = 'none';
 
     toggleRecordButton.addEventListener('click', toggleRecording);
 
