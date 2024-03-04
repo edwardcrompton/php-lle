@@ -2,27 +2,27 @@
 
 @section('content')
 <h1>{{ app('request')->input('name') }}</h1>
-<form method="POST" enctype="multipart/form-data" id="audioClipForm" action="{{ url('/audio/upload') }}">
+<form method="POST" enctype="multipart/form-data" id="audioClipForm" action="{{ $urllocaliser->route('upload') }}">
     @csrf
 
     <div id="address-container">
-        <label for="address">Location address</label>
+        <label for="address">{{ __('Location address') }}</label>
         <input type="text" name="location_address" id="address" value="{{ app('request')->input('location') }}"></input>
     </div>
 
     <div id="audio-container">
-        <label for="audio">Audio file</label>
+        <label for="audio">{{ __('Audio file') }}</label>
         <input id="audio" name="audio" type="file"></input>
     </div>
 
     <div id="controls">
-        <button id="toggleRecord" type="button">Start Recording</button>
+        <button id="toggleRecord" type="button">{{ __('Start recording') }}</button>
         <audio id="audioPlayer" controls></audio>
     </div>
-
+    
     <div id="save">
-        <input type="submit" value="Save">
-    </div>
+        <input type="submit" value="{{ __('Save') }}">
+    </div>    
 </form>
 @endsection
 
@@ -31,6 +31,9 @@
     let mediaRecorder;
     let audioChunks = [];
     let isRecording = false;
+
+    var labelStopRecording = {!! json_encode(__('Stop recording')) !!};
+    var labelStartRecording = {!! json_encode(__('Start recording')) !!};
 
     const toggleRecordButton = document.getElementById('toggleRecord');
     const audioPlayer = document.getElementById('audioPlayer');
@@ -74,14 +77,14 @@
 
         mediaRecorder.start();
         isRecording = true;
-        toggleRecordButton.textContent = 'Stop Recording';
+        toggleRecordButton.textContent = labelStopRecording;
     }
 
     function stopRecording() {
         if (mediaRecorder && mediaRecorder.state === 'recording') {
             mediaRecorder.stop();
             isRecording = false;
-            toggleRecordButton.textContent = 'Start Recording';
+            toggleRecordButton.textContent = labelStartRecording;
         }
     }
 

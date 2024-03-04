@@ -1,6 +1,6 @@
-<h1>Search</h1>
+<h1>{{ __('Search') }}</h1>
 
-<h2>Results for {{$place}}</h2>
+<h2>{{ __('Results for :place', ['place' => $place]) }}</h2>
 
 <ul>
 @foreach ($results as $row)

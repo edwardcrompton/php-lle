@@ -11,7 +11,7 @@ class SearchController extends Controller
         $this->searchApi = $searchApi;
     }
 
-    public function index(string $place) {
+    public function index(string $locale, string $place) {
 
         $search = $this->searchApi->newSearch();
         $search->query($place);

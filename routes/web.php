@@ -16,22 +16,31 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', [AudioController::class, 'list'])
-    ->name('audio-records.index');
+// Localised routes.
+Route::group(['prefix' => '{locale}', 'middleware' => 'setlocale'], function () {
 
-Route::get('/audio/list', function() {
-    return redirect()->route('audio-records.index');
+    Route::get('/', [AudioController::class, 'list'])
+        ->name('index');
+
+    Route::get('/audio/list', function() {
+        return redirect()->route('index');
+    });
+
+    Route::get('/filter', function(Request $request) {
+        return redirect()->route('search', ['place' => $request->place, 'locale' => app()->getLocale()]);
+    })->name('filter');
+
+    Route::get('/search/place/{place}', [SearchController::class, 'index'])
+        ->name('search');
+
+    Route::get('/audio/record', [AudioController::class, 'record'])
+        ->name('record');
+
+    Route::post('/audio/upload', [AudioController::class, 'upload'])
+        ->name('upload');
 });
 
-Route::get('/filter', function(Request $request) {
-    return redirect()->route('search', ['place' => $request->place]);
-})->name('filter');
-
-Route::get('/search/place/{place}', [SearchController::class, 'index'])
-    ->name('search');
-
-Route::get('/audio/record', function () {
-    return view('audio');
-})->name('record');
-
-Route::post('/audio/upload', [AudioController::class, 'upload']);
+// Non localised routes.
+Route::get('/', function() {
+    return redirect('/en');
+});
