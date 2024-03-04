@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\AudioRecord;
 use Illuminate\Http\Request;
+use App\Services\UrlLocaliser;
 
 class AudioController extends Controller
 {
+    protected $urlLocaliser;
+
+    public function __construct(UrlLocaliser $urlLocaliser) {
+        $this->urlLocaliser = $urlLocaliser;
+    }
+
     public function upload(Request $request)
     {
         if ($request->hasFile('audio')) {
@@ -25,18 +32,24 @@ class AudioController extends Controller
             $record->save();
 
             flash('Audio uploaded successfully.')->success();
-            return redirect()->route('audio-records.index');
+            return $this->urlLocaliser->redirect('index');
         }
+        flash('No audio file was provided.')->error();
+        return $this->urlLocaliser->redirect('record');
+    }
 
-        return response()->json(['message' => 'No audio file provided'], 400);
+    public function record() {
+        $urllocaliser = $this->urlLocaliser;
+        return view('audio', compact('urllocaliser'));
     }
 
     public function list()
     {
         // Retrieve paginated audio records.
         $audioRecords = AudioRecord::orderBy('id', 'DESC')->paginate(10);
+        $urllocaliser = $this->urlLocaliser;
 
-        return view('list', compact('audioRecords'));
+        return view('list', compact('audioRecords', 'urllocaliser'));
     }
 
 }

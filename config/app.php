@@ -100,6 +100,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Available Locales
+    |--------------------------------------------------------------------------
+    |
+    | All locales that the application works with.
+    |
+    */
+
+    'available_locales' => [
+        'English' => 'en',
+        'Cymraeg' => 'cy',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Faker Locale
     |--------------------------------------------------------------------------
     |
@@ -184,6 +198,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'UrlLocaliser' => \App\Services\UrlLocaliser::class,
     ])->toArray(),
 
 ];
