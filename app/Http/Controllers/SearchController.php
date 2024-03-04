@@ -14,7 +14,7 @@ class SearchController extends Controller
     public function index(string $locale, string $place) {
 
         $search = $this->searchApi->newSearch();
-        $search->query($place);
+        $search->query($place)->viewbox(-5.5151, 51.2956, -2.6870, 53.5011);
 
         $results = $this->searchApi->find($search);
 
