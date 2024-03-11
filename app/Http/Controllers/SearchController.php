@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\AudioRecord;
 use NominatimLaravel\Content\Nominatim;
+use App\Services\UrlLocaliser;
 
 class SearchController extends Controller
 {
-    public function __construct(Nominatim $searchApi) {
+    protected $searchApi;
+    protected $urlLocaliser;
+
+    public function __construct(Nominatim $searchApi, UrlLocaliser $urlLocaliser) {
         $this->searchApi = $searchApi;
+        $this->urlLocaliser = $urlLocaliser;
     }
 
     public function index(string $locale, string $place) {
@@ -48,6 +53,7 @@ class SearchController extends Controller
         return view('search', [
             'place' => $place,
             'results' => $list,
+            'urllocaliser' => $this->urlLocaliser
         ]);
     }
 }
