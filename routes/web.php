@@ -30,7 +30,7 @@ Route::group(['prefix' => '{locale}', 'middleware' => 'setlocale'], function () 
         return redirect()->route('search', ['place' => $request->place, 'locale' => app()->getLocale()]);
     })->name('filter');
 
-    Route::get('/search/place/{place}', [SearchController::class, 'index'])
+    Route::get('/search/place/{place?}', [SearchController::class, 'index'])
         ->name('search');
 
     Route::get('/audio/record', [AudioController::class, 'record'])
