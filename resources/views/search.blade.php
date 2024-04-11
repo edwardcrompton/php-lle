@@ -1,9 +1,12 @@
-<h1>Search</h1>
 
-<h2>Results for {{$place}}</h2>
+<h1>{{ __('Search') }}</h1>
+
+<h2>{{ __('Results for :place', ['place' => $place]) }}</h2>
+
+@include('search-form')
 
 <ul>
-@foreach ($results as $result)
-    <li><a href="{{ url('/audio/record?location=' . urlencode($result['address'])) . '&name=' . urlencode($result['name']) }}">{{ $result['address'] }}</a></li>
+@foreach ($results as $row)
+    @include('item')
 @endforeach
 </ul>
