@@ -27,4 +27,4 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_KEY }}
-          script: larasail enter && cd ${{ secrets.PROJECT_PATH }} && git pull
+          script: su - larasail && cd ${{ secrets.PROJECT_PATH }} && git pull
