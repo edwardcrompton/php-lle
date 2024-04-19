@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AudioRecord;
 use Illuminate\Http\Request;
 use App\Services\UrlLocaliser;
+use Illuminate\Support\Facades\Storage;
 
 class AudioController extends Controller
 {
@@ -26,7 +27,7 @@ class AudioController extends Controller
 
             // Create a new database record
             $record = new AudioRecord();
-            $record->audio_path = $path;
+            $record->audio_path = Storage::url($path);
             $record->location_address = $locationAddress;
 
             $record->save();
